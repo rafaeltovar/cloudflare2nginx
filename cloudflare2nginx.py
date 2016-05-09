@@ -7,13 +7,13 @@ for accept only connections from Cloudflare servers.
 TODO write how to
 """
 
-OUTPUT_FILE = "/etc/nginx/cloudflare.conf"
+OUTPUT_FILE = "cloudflare.conf"
 
 # from # https://www.cloudflare.com/ips
 CLOUDFLARE_IPv4 = "https://www.cloudflare.com/ips-v4"
 CLOUDFLARE_IPv6 = "https://www.cloudflare.com/ips-v6"
 
-import urllib2
+import time, urllib2
 
 # get cloudflare ips
 contentIPv4 = urllib2.urlopen(CLOUDFLARE_IPv4).read()
