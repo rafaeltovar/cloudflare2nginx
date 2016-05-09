@@ -24,9 +24,7 @@ contentIPv6 = urllib2.urlopen(CLOUDFLARE_IPv6).read()
 # TODO control permission?
 f = open(OUTPUT_FILE,'w')
 f.write('# By Cloudflare2Nginx script\n')
-f.write('# UPDATE: ' + time.strftime("%d/%m/%Y")+'\n')
-f.write('# Deny all petition\n')
-f.write('deny all;\n\n')
+f.write('# UPDATE: ' + time.strftime("%d/%m/%Y")+'\n\n')
 f.write('# IPv4\n')
 for line in contentIPv4.splitlines():
   f.write('allow ' + line + ';\n')
@@ -35,4 +33,6 @@ f.write('\n# IPv6\n')
 for line in contentIPv6.splitlines():
   f.write('allow ' + line + ';\n')
 
+f.write('# Deny all petition\n')
+f.write('deny all;\n')
 f.close()
